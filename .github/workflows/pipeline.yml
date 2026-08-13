@@ -18,7 +18,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      - name: Falla intencional del laboratorio
+        run: exit 1
+     
       - name: Mostrar información del entorno
         run: |
           echo "================================"
