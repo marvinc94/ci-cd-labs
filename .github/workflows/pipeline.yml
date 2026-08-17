@@ -11,6 +11,10 @@ on:
       - main
 
 jobs:
+
+  # ===================================
+  # HELLO CI - CHECK OBLIGATORIO
+  # ===================================
   hello-ci:
     name: Hello CI
     runs-on: ubuntu-latest
@@ -21,16 +25,17 @@ jobs:
 
       - name: Verificar pipeline
         run: echo "Hello CI ejecutado correctamente"
+
+
   # ===================================
   # 1. COMPILACION
   # ===================================
-      build:
+  build:
     name: Compilacion
     runs-on: ubuntu-latest
     needs: hello-ci
 
     steps:
-
       - name: Descargar repositorio
         uses: actions/checkout@v7
 
@@ -54,11 +59,9 @@ jobs:
   test:
     name: Pruebas Unitarias
     runs-on: ubuntu-latest
-
     needs: build
 
     steps:
-
       - name: Descargar repositorio
         uses: actions/checkout@v7
 
@@ -87,18 +90,18 @@ jobs:
         working-directory: app
         run: |
           node --test \
-          --experimental-test-coverage \
-          --test-coverage-lines=90 \
-          --test-coverage-branches=80 \
-          --test-coverage-functions=90
+            --experimental-test-coverage \
+            --test-coverage-lines=90 \
+            --test-coverage-branches=80 \
+            --test-coverage-functions=90
 
       - name: Generar cobertura LCOV
         working-directory: app
         run: |
           node --test \
-          --experimental-test-coverage \
-          --test-reporter=lcov \
-          --test-reporter-destination=coverage/lcov.info
+            --experimental-test-coverage \
+            --test-reporter=lcov \
+            --test-reporter-destination=coverage/lcov.info
 
       - name: Publicar reporte de pruebas
         if: always()
@@ -121,11 +124,9 @@ jobs:
   quality-gate:
     name: Quality Gate
     runs-on: ubuntu-latest
-
     needs: test
 
     steps:
-
       - name: Validacion final
         run: |
           echo "================================"
