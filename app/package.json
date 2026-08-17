@@ -1,0 +1,11 @@
+{
+  "name": "ci-cd-labs-app",
+  "version": "1.0.0",
+  "description": "Aplicacion de ejemplo para pruebas CI/CD",
+  "main": "calculadora.js",
+  "scripts": {
+    "build": "node --check calculadora.js",
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage"
+  }
+}
