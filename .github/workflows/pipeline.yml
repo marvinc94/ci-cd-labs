@@ -11,13 +11,23 @@ on:
       - main
 
 jobs:
+  hello-ci:
+    name: Hello CI
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v7
+
+      - name: Verificar pipeline
+        run: echo "Hello CI ejecutado correctamente"
   # ===================================
   # 1. COMPILACION
   # ===================================
-  build:
+      build:
     name: Compilacion
     runs-on: ubuntu-latest
+    needs: hello-ci
 
     steps:
 
