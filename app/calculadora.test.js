@@ -9,7 +9,7 @@ const {
 } = require('./calculadora');
 
 test('Suma: 2 + 3 = 5', () => {
-  assert.equal(suma(2, 3), 100);
+  assert.equal(suma(2, 3), 5);
 });
 
 test('Resta: 10 - 4 = 6', () => {
